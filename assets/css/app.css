@@ -1,0 +1,45 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    background-color: #EFECEC;
+}
+
+header .navbar {
+    background-color: #EFECEC;
+    height: 100vh;
+    padding-block: 1rem;
+    margin-inline: auto;
+    position: fixed;
+    left: 0;
+    overflow-y: scroll;
+}
+
+header .navbar .nav-list ul {
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+}
+
+header .navbar .nav-list li {
+    position: relative;
+    list-style-type: none;
+}
+
+header .navbar .nav-list li a {
+    padding: 0.5rem 1.5rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 0.90rem;
+    font-weight: 600;
+    color: rgb(51, 51, 51);
+}
