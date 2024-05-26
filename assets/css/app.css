@@ -31,6 +31,7 @@ header .navbar .nav-list ul {
 }
 
 header .navbar .nav-list li {
+    padding: 0.5rem 1.5rem;
     position: relative;
     list-style-type: none;
 }
@@ -42,4 +43,50 @@ header .navbar .nav-list li a {
     font-size: 0.90rem;
     font-weight: 600;
     color: rgb(51, 51, 51);
+}
+
+header .navbar .nav-list li a:hover{
+    color: #A5DD9B;
+}
+
+.content {
+    margin-left: 200px;
+    padding: 20px;
+    width: calc(100% - 200px);
+    box-sizing: border-box;
+}
+
+.summary-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 25px;
+    height: 35vh;
+}
+
+.summary-item{
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    height: 150px;
+    overflow: hidden;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.summary-item:nth-child(1){
+    background-color: #c6ebc5;
+}
+
+.summary-item:nth-child(2){
+    background-color: #bbe2ec;
+}
+
+.summary-item:nth-child(3){
+    background-color: #fdffab;
+}
+
+.summary-item:nth-child(4){
+    background-color: #fa7070;
 }
