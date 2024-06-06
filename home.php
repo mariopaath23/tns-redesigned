@@ -19,18 +19,9 @@
 </head>
 
 <body>
-    <header>
-        <div class="navbar">
-            <nav class="nav-list">
-                <ul>
-                    <li>AbsenceOS</li>
-                    <li><a href="#" onclick="loadpage('beranda.php')">Beranda</a></li>
-                    <li><a href="#" onclick="loadpage('absensi.php')">Absensi</a></li>
-                    <li><a href="#" onclick="loadpage('siswa.php')">Siswa</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <?php
+    require('/Applications/MAMP/htdocs/tns-redesigned/components/sidebar.php');
+    ?>
     <main class="content" id="content">
 
     </main>
