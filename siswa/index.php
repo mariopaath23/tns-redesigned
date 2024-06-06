@@ -11,6 +11,7 @@
     include('../config/icons.php');
     include('../config/js.php');
     require '../config.php';
+    $getClass = query("SELECT * FROM class");
     ?>
 </head>
 
@@ -37,15 +38,38 @@
                     <label for="id_kelas">Kelas</label>
                     <select name="class_uuid" id="id_kelas" required>
                         <option value="">--Pilih Kelas--</option>
-                        <option value="">A</option>
-                        <option value="">B</option>
-                        <option value="">C</option>
+                        <?php foreach ($getClass as $class) : ?>
+                            <option value="<?= htmlspecialchars($class['uuid'] ?? '', ENT_QUOTES, 'UTF-8') ?>">
+                                <?= htmlspecialchars($class['class_name'] ?? '', ENT_QUOTES, 'UTF-8') ?>
+                            </option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
                 <div class="form-group">
                     <button type="submit" name="submit">Tambah</button>
                 </div>
             </form>
+        </section>
+
+        <section id="data" class="data-container">
+            <h1>Data</h1>
+            <table>
+                <thead>
+                    <th>NISN</th>
+                    <th>Nama</th>
+                    <th>Waktu</th>
+                </thead>
+                <tr>
+                    <td>Budiono</td>
+                    <td>Siswa</td>
+                    <td>2024-05-28 22:40:47</td>
+                </tr>
+                <tr>
+                    <td>Susilo</td>
+                    <td>Guru</td>
+                    <td>2024-05-28 22:40:47</td>
+                </tr>
+            </table>
         </section>
     </div>
 </body>

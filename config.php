@@ -20,6 +20,9 @@ function query($query)
 {
     global $conn;
     $result = mysqli_query($conn, $query);
+    if (!$result) {
+        return [];
+    }
     $rows = [];
     while ($row = mysqli_fetch_assoc($result)) {
         $rows[] = $row;
@@ -29,14 +32,28 @@ function query($query)
 
 function addStudent($data)
 {
-    global $conn, $created_at, $updated_at;
+    global $conn;
     $uuid = createuuid();
 
-    $query = "INSERT INTO student VALUES 
-        ('$uuid','{$data['class_uuid']}','{$data['nisn']}', '{$data['student_name']}', '$created_at', '$updated_at')
-    ";
-    mysqli_query($conn, $query);
-    return mysqli_affected_rows($conn);
+    $class_uuid = mysqli_real_escape_string($conn, $data['class_uuid']);
+    $nisn = mysqli_real_escape_string($conn, $data['nisn']);
+    $student_name = mysqli_real_escape_string($conn, $data['student_name']);
+
+    $created_at = date('Y-m-d H:i:s');
+    $updated_at = date('Y-m-d H:i:s');
+
+    $query = "INSERT INTO student (uuid, class_uuid, nisn, student_name, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?)";
+
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "ssssss", $uuid, $class_uuid, $nisn, $student_name, $created_at, $updated_at);
+
+    mysqli_stmt_execute($stmt);
+
+    $affected_rows = mysqli_stmt_affected_rows($stmt);
+
+    mysqli_stmt_close($stmt);
+
+    return $affected_rows;
 }
 
 function addClass($data)

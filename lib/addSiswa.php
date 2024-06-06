@@ -1,23 +1,23 @@
 <?php
-require_once('../config.php');
+require '../config.php'; // This includes the functions from your config.php
 
-// Check if form is submitted
-if (isset($_POST['submit'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Debugging: Output received POST data
+    echo "<pre>";
+    print_r($_POST);
+    echo "</pre>";
 
-    // Get class name from form data
-    $nisn = htmlspecialchars($_POST["nisn"]);
-    $student_name = htmlspecialchars($_POST["student_name"]);
-    $class_uuid = $_POST["class_uuid"];
+    // Retrieve form data
+    $data = [
+        'nisn' => $_POST['nisn'] ?? '',
+        'student_name' => $_POST['student_name'] ?? '',
+        'class_uuid' => $_POST['class_uuid'] ?? ''
+    ];
 
-    $rows_affected = addStudent(array(
-        'nisn' => $nisn,
-        'student_name' => $student_name,
-        'class_uuid' => $class_uuid
-    ));
-
-    if ($rows_affected > 0) {
-        echo "<script>alert('Siswa berhasil ditambahkan!');</script>";
+    // Call the addStudent function
+    if (addStudent($data) > 0) {
+        echo "Data siswa berhasil ditambahkan!";
     } else {
-        echo "<script>alert('Error: Gagal menambahkan kelas.');</script>";
+        echo "Gagal menambahkan data siswa.";
     }
 }
