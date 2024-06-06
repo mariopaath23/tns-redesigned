@@ -1,38 +1,65 @@
-<?php
-require 'config.php';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>AbsenceOS - Kelas</title>
+    <?php
+    include('../config/css.php');
+    include('../config/fonts.php');
+    include('../config/icons.php');
+    include('../config/js.php');
+    require '../config.php';
+    ?>
 </head>
 
 <body>
-    <div class="top">
-        <h1>Kelas</h1>
+    <?php
+    include('../components/sidebar.php');
+    ?>
+    <div class="content">
+        <div class="top">
+            <h1>Kelas</h1>
+        </div>
+        <section id="add-kelas" class="form-container">
+            <h1>Tambah Data Kelas</h1>
+            <form action="" method="POST">
+                <div class="form-group">
+                    <label for="nama">Nama</label>
+                    <input type="text" name="class_name" id="nama" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" name="submit">Tambah</button>
+                </div>
+            </form>
+        </section>
+        <section id="data" class="data-container">
+            <h1>Data</h1>
+            <table>
+                <thead>
+                    <th>Nama</th>
+                    <th>Jumlah Siswa</th>
+                    <th>Terakhir diubah</th>
+                    <th>Aksi</th>
+                </thead>
+                <?php
+                $classes = query("SELECT class_name, COUNT(student.class_uuid) AS jumlah_siswa, MAX(student.updated_at) AS terakhir_diubah FROM class LEFT JOIN student ON class.uuid = student.class_uuid GROUP BY class.uuid ORDER BY class_name ASC");
+                foreach ($classes as $class) {
+                    echo "<tr>";
+                    echo "<td>" . htmlspecialchars($class['class_name'], ENT_QUOTES, 'UTF-8') . "</td>";
+                    echo "<td>" . htmlspecialchars($class['jumlah_siswa'], ENT_QUOTES, 'UTF-8') . "</td>";
+                    echo "<td>" . htmlspecialchars($class['terakhir_diubah'], ENT_QUOTES, 'UTF-8') . "</td>";
+                    echo "<td>";
+                    echo "<a href='#' class='btn-ubah'>Ubah</a>";
+                    echo "<a href='#' class='btn-hapus'>Hapus</a>";
+                    echo "</td>";
+                    echo "</tr>";
+                }
+                ?>
+            </table>
+        </section>
     </div>
-
-    <section id="add-kelas" class="form-container">
-        <h1>Tambah Data Kelas</h1>
-        <form action="" method="POST">
-            <div class="form-group">
-                <label for="nama">Nama</label>
-                <input type="text" name="class_name" id="nama" required>
-            </div>
-            <div class="form-group">
-                <button type="submit" name="submit">Tambah</button>
-            </div>
-        </form>
-    </section>
-
-    <section id="list-kelas" class="data-container">
-        <h1>Daftar Kelas</h1>
-
-    </section>
 </body>
 
 </html>

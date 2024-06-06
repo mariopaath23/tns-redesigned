@@ -24,7 +24,7 @@
         <section id="time" class="time-container">
             <p>Sekarang Waktu Menunjukkan:</p>
             <h1><span id="server-time"></span></h1>
-            <a href="" class="btn-primary">Mulai Absensi</a>
+            <a href="../absensi/absensi-page.php" class="btn-primary" target="_blank" onclick="window.open('absensi-page.php', 'Absensi', 'fullscreen=yes'); return false;">Mulai Absensi</a>
         </section>
         <section id="log" class="log-container">
             <h1>Log</h1>

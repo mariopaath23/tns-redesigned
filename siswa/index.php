@@ -57,18 +57,23 @@
                 <thead>
                     <th>NISN</th>
                     <th>Nama</th>
-                    <th>Waktu</th>
+                    <th>Kelas</th>
+                    <th>Aksi</th>
                 </thead>
-                <tr>
-                    <td>Budiono</td>
-                    <td>Siswa</td>
-                    <td>2024-05-28 22:40:47</td>
-                </tr>
-                <tr>
-                    <td>Susilo</td>
-                    <td>Guru</td>
-                    <td>2024-05-28 22:40:47</td>
-                </tr>
+                <?php
+                $students = query("SELECT student_name, nisn, class_name FROM student JOIN class ON student.class_uuid = class.uuid ORDER BY nisn ASC");
+                foreach ($students as $student) {
+                    echo "<tr>";
+                    echo "<td>" . htmlspecialchars($student['nisn'], ENT_QUOTES, 'UTF-8') . "</td>";
+                    echo "<td>" . htmlspecialchars($student['student_name'], ENT_QUOTES, 'UTF-8') . "</td>";
+                    echo "<td>" . htmlspecialchars($student['class_name'], ENT_QUOTES, 'UTF-8') . "</td>";
+                    echo "<td>";
+                    echo "<a href='#' class='btn-ubah'>Ubah</a>";
+                    echo "<a href='#' class='btn-hapus'>Hapus</a>";
+                    echo "</td>";
+                    echo "</tr>";
+                }
+                ?>
             </table>
         </section>
     </div>
