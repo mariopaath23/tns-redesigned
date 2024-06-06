@@ -24,7 +24,7 @@
         </div>
         <section id="add-kelas" class="form-container">
             <h1>Tambah Data Kelas</h1>
-            <form action="" method="POST">
+            <form action="../lib/addClass.php" method="POST">
                 <div class="form-group">
                     <label for="nama">Nama</label>
                     <input type="text" name="class_name" id="nama" required>
