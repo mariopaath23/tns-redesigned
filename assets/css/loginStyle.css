@@ -12,6 +12,21 @@ body {
     background-color: #A5DD9B;
 }
 
+input[type="text"],
+input[type="password"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+    width: 70%;
+}
+
+input[type="text"]:focus {
+    border-color: #2ea44f;
+    box-shadow: 0 0 0 3px rgba(46, 164, 79, 0.4);
+}
+
 .login-container {
     display: flex;
     flex-direction: column;

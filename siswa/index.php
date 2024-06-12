@@ -1,3 +1,5 @@
+<?php require('../config/protector.php') ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,15 +29,12 @@
             <h1>Tambah Data Siswa</h1>
             <form action="../lib/addSiswa.php" method="POST">
                 <div class="form-group">
-                    <label for="nisn">NISN</label>
-                    <input type="text" name="nisn" id="nisn" required>
+                    <input type="text" name="nisn" id="nisn" placeholder="NISN" required>
                 </div>
                 <div class="form-group">
-                    <label for="nama">Nama</label>
-                    <input type="text" name="student_name" id="nama" required>
+                    <input type="text" name="student_name" id="nama" placeholder="Nama Siswa" required>
                 </div>
                 <div class="form-group">
-                    <label for="id_kelas">Kelas</label>
                     <select name="class_uuid" id="id_kelas" required>
                         <option value="">--Pilih Kelas--</option>
                         <?php foreach ($getClass as $class) : ?>
@@ -46,7 +45,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <button type="submit" name="submit">Tambah</button>
+                    <button type="submit" name="submit" class="btn-primary">Tambah</button>
                 </div>
             </form>
         </section>
@@ -68,8 +67,8 @@
                     echo "<td>" . htmlspecialchars($student['student_name'], ENT_QUOTES, 'UTF-8') . "</td>";
                     echo "<td>" . htmlspecialchars($student['class_name'], ENT_QUOTES, 'UTF-8') . "</td>";
                     echo "<td>";
-                    echo "<a href='#' class='btn-ubah'>Ubah</a>";
-                    echo "<a href='#' class='btn-hapus'>Hapus</a>";
+                    echo "<a href='#' class='btn-secondary'>Ubah</a>";
+                    echo "<a href='#' class='btn-tertiary'>Hapus</a>";
                     echo "</td>";
                     echo "</tr>";
                 }

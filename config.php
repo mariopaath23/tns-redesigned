@@ -74,6 +74,25 @@ function addClass($data)
     return $affected_rows;
 }
 
+function addAccount($data)
+{
+    global $conn, $created_at, $updated_at;
+    $uuid = createuuid();
+    $username = mysqli_real_escape_string($conn, $data['username']);
+    $password = password_hash($data['password'], PASSWORD_BCRYPT);
+    $role_id = $data['role_id'];
+
+    $query = "INSERT INTO accounts (uuid, username, password, role_id, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?)";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "sssiss", $uuid, $username, $password, $role_id, $created_at, $updated_at);
+
+    mysqli_stmt_execute($stmt);
+
+    $affected_rows = mysqli_stmt_affected_rows($stmt);
+    mysqli_stmt_close($stmt);
+    return $affected_rows;
+}
+
 function presenceSubmit($data)
 {
     global $conn, $created_at;

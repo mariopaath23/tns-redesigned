@@ -1,3 +1,5 @@
+<?php require('../config/protector.php') ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,11 +28,10 @@
             <h1>Tambah Data Kelas</h1>
             <form action="../lib/addClass.php" method="POST">
                 <div class="form-group">
-                    <label for="nama">Nama</label>
-                    <input type="text" name="class_name" id="nama" required>
+                    <input type="text" name="class_name" id="nama" placeholder="Nama Kelas" required>
                 </div>
                 <div class="form-group">
-                    <button type="submit" name="submit">Tambah</button>
+                    <button type="submit" name="submit" class="btn-primary">Tambah</button>
                 </div>
             </form>
         </section>
@@ -48,11 +49,17 @@
                 foreach ($classes as $class) {
                     echo "<tr>";
                     echo "<td>" . htmlspecialchars($class['class_name'], ENT_QUOTES, 'UTF-8') . "</td>";
-                    echo "<td>" . htmlspecialchars($class['jumlah_siswa'], ENT_QUOTES, 'UTF-8') . "</td>";
+                    echo "<td>";
+                    if ($class['jumlah_siswa'] == 0) {
+                        echo "Belum ada siswa";
+                    } else {
+                        echo htmlspecialchars($class['jumlah_siswa'], ENT_QUOTES, 'UTF-8');
+                    }
+                    echo "</td>";
                     echo "<td>" . htmlspecialchars($class['terakhir_diubah'], ENT_QUOTES, 'UTF-8') . "</td>";
                     echo "<td>";
-                    echo "<a href='#' class='btn-ubah'>Ubah</a>";
-                    echo "<a href='#' class='btn-hapus'>Hapus</a>";
+                    echo "<a href='#' class='btn-secondary'>Ubah</a>";
+                    echo "<a href='#' class='btn-tertiary'>Hapus</a>";
                     echo "</td>";
                     echo "</tr>";
                 }

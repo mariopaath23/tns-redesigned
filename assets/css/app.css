@@ -55,6 +55,80 @@
   box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
 }
 
+.btn-secondary {
+  appearance: button;
+  backface-visibility: hidden;
+  background-color: #405cf5;
+  border-radius: 6px;
+  border-width: 0;
+  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+  font-size: 100%;
+  height: 44px;
+  line-height: 1.15;
+  margin: 12px 0 0;
+  outline: none;
+  overflow: hidden;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transform: translateZ(0);
+  transition: all .2s,box-shadow .08s ease-in;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 50%;
+  text-decoration: none;
+}
+
+.btn-secondary:disabled {
+  cursor: default;
+}
+
+.btn-secondary:focus {
+  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
+}
+
+.btn-tertiary {
+    appearance: button;
+    backface-visibility: hidden;
+    background-color: #ff4d4d; /* Red color */
+    border-radius: 6px;
+    border-width: 0;
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+    font-size: 100%;
+    height: 44px;
+    line-height: 1.15;
+    margin: 12px 0 0;
+    outline: none;
+    overflow: hidden;
+    padding: 0 25px;
+    position: relative;
+    text-align: center;
+    text-transform: none;
+    transform: translateZ(0);
+    transition: all .2s,box-shadow .08s ease-in;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 50%;
+    text-decoration: none;
+}
+.btn-tertiary:disabled {
+    cursor: default;
+}
+.btn-tertiary:focus {
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(255, 77, 77, .3) 0 0 0 4px; /* Red color */
+}
+
 table {
     table-layout: fixed;
     width: calc(100vw - 250px);
@@ -81,6 +155,34 @@ tr:nth-child(even){
 
 td:nth-child(3){
     text-align: center;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+    width: 70%;
+}
+
+input[type="text"]:focus {
+    border-color: #2ea44f;
+    box-shadow: 0 0 0 3px rgba(46, 164, 79, 0.4);
+}
+
+select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+}
+
+select:focus {
+    border-color: #2ea44f;
+    box-shadow: 0 0 0 3px rgba(46, 164, 79, 0.4);
 }
 
 body {
@@ -150,12 +252,13 @@ header .navbar .nav-list li a:hover{
     align-items: center;
     gap: 25px;
     height: 35vh;
+    flex-wrap: wrap;
 }
 
 .summary-item{
     display: flex;
     flex-direction: column;
-    width: 350px;
+    width: 250px;
     height: 150px;
     overflow: hidden;
     padding: 25px;
@@ -189,11 +292,35 @@ header .navbar .nav-list li a:hover{
 .form-container{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width: calc(100vw - 250px);
+    height: 300px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+}
+
+.dev-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 300px;
+}
+
+.account-container{
     padding: 10px;
     width: calc(100vw - 250px);
     height: 300px;
     border-radius: 10px;
     background-color: #FFFFFF;
+}
+
+.profile-card{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 25px;
+    height: 35vh;
+    flex-wrap: wrap;
 }
